@@ -34,18 +34,18 @@
     }
   },
   "paths": {
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/assistedQueries": {
       "get": {
         "x-ms-examples": {
-          "Get all watchlists.": {
-            "$ref": "./examples/watchlists/GetWatchlists.json"
+          "Get all queries.": {
+            "$ref": "./examples/QueryAssistant/GetQueries.json"
           }
         },
         "tags": [
-          "Watchlists"
+          "Queries"
         ],
-        "description": "Gets all watchlists, without watchlist items.",
-        "operationId": "Watchlists_List",
+        "description": "Gets all queries.",
+        "operationId": "Queries_List",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -58,16 +58,13 @@
           },
           {
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
-          },
-          {
-            "$ref": "../../../common/2.0/types.json#/parameters/ODataSkipToken"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/WatchlistList"
+              "$ref": "#/definitions/QueryList"
             }
           },
           "default": {
@@ -82,18 +79,18 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/assistedQueries/{queryId}": {
       "get": {
         "x-ms-examples": {
-          "Get a watchlist.": {
-            "$ref": "./examples/watchlists/GetWatchlistByAlias.json"
+          "Get a query.": {
+            "$ref": "./examples/QueryAssistant/GetQueryById.json"
           }
         },
         "tags": [
-          "Watchlists"
+          "Queries"
         ],
-        "description": "Gets a watchlist, without its watchlist items.",
-        "operationId": "Watchlists_Get",
+        "description": "Gets a query",
+        "operationId": "Queries_Get",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -108,14 +105,14 @@
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
           },
           {
-            "$ref": "#/parameters/WatchlistAlias"
+            "$ref": "#/parameters/QueryId"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Watchlist"
+              "$ref": "#/definitions/Query"
             }
           },
           "default": {
@@ -128,15 +125,15 @@
       },
       "delete": {
         "x-ms-examples": {
-          "Delete a watchlist.": {
-            "$ref": "./examples/watchlists/DeleteWatchlist.json"
+          "Delete a query.": {
+            "$ref": "./examples/QueryAssistant/DeleteQuery.json"
           }
         },
         "tags": [
-          "Watchlists"
+          "Queries"
         ],
-        "description": "Delete a watchlist.",
-        "operationId": "Watchlists_Delete",
+        "description": "Delete a query.",
+        "operationId": "Queries_Delete",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -151,7 +148,7 @@
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
           },
           {
-            "$ref": "#/parameters/WatchlistAlias"
+            "$ref": "#/parameters/QueryId"
           }
         ],
         "responses": {
@@ -177,18 +174,15 @@
       },
       "put": {
         "x-ms-examples": {
-          "Creates or updates a watchlist.": {
-            "$ref": "./examples/watchlists/CreateWatchlist.json"
-          },
-          "Creates or updates a watchlist and bulk creates watchlist items.": {
-            "$ref": "./examples/watchlists/CreateWatchlistAndWatchlistItems.json"
+          "Creates or updates a query.": {
+            "$ref": "./examples/QueryAssistant/CreateQuery.json"
           }
         },
         "tags": [
-          "Watchlists"
+          "Queries"
         ],
-        "description": "Create or update a Watchlist and its Watchlist Items (bulk creation, e.g. through text/csv content type). To create a Watchlist and its Items, we should call this endpoint with either rawContent or a valid SAR URI and contentType properties. The rawContent is mainly used for small watchlist (content size below 3.8 MB). The SAS URI enables the creation of large watchlist, where the content size can go up to 500 MB. The status of processing such large file can be polled through the URL returned in Azure-AsyncOperation header.",
-        "operationId": "Watchlists_CreateOrUpdate",
+        "description": "Create or update a query.",
+        "operationId": "Queries_CreateOrUpdate",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -203,23 +197,23 @@
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
           },
           {
-            "$ref": "#/parameters/WatchlistAlias"
+            "$ref": "#/parameters/QueryId"
           },
           {
-            "$ref": "#/parameters/Watchlist"
+            "$ref": "#/parameters/Query"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Watchlist"
+              "$ref": "#/definitions/Query"
             }
           },
-          "201": {
+          "201": {????
             "description": "Created. The response includes the Provisioning State and the Azure-AsyncOperation header. To get the progress of the operation, call GET operation on the URL in Azure-AsyncOperation header field.",
             "schema": {
-              "$ref": "#/definitions/Watchlist"
+              "$ref": "#/definitions/Query"
             },
             "headers": {
               "Azure-AsyncOperation": {
@@ -237,18 +231,18 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/assistedQueries/{queryId}/editedQueries": {
       "get": {
         "x-ms-examples": {
-          "Get all watchlist Items.": {
-            "$ref": "./examples/watchlists/GetWatchlistItems.json"
+          "Get all edited queries.": {
+            "$ref": "./examples/QueryAssistant/GetEditedQueries.json"
           }
         },
         "tags": [
-          "WatchlistItems"
+          "EditedQueries"
         ],
-        "description": "Gets all watchlist Items.",
-        "operationId": "WatchlistItems_List",
+        "description": "Gets all edited queries.",
+        "operationId": "EditedQueries_List",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -263,17 +257,14 @@
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
           },
           {
-            "$ref": "../../../common/2.0/types.json#/parameters/ODataSkipToken"
-          },
-          {
-            "$ref": "#/parameters/WatchlistAlias"
+            "$ref": "#/parameters/QueryId"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/WatchlistItemList"
+              "$ref": "#/definitions/EditedQueryList"
             }
           },
           "default": {
@@ -288,18 +279,18 @@
         }
       }
     },
-    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/watchlists/{watchlistAlias}/watchlistItems/{watchlistItemId}": {
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/assistedQueries/{queryId}/editedQueries/{editedQueryId}": {
       "get": {
         "x-ms-examples": {
-          "Get a watchlist item.": {
-            "$ref": "./examples/watchlists/GetWatchlistItemById.json"
+          "Get an edited query.": {
+            "$ref": "./examples/QueryAssistant/GetEditedQueryById.json"
           }
         },
         "tags": [
-          "WatchlistItems"
+          "EditedQueries"
         ],
-        "description": "Gets a watchlist, without its watchlist items.",
-        "operationId": "WatchlistItems_Get",
+        "description": "Gets an edited query",
+        "operationId": "EditedQueries_Get",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -314,17 +305,17 @@
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
           },
           {
-            "$ref": "#/parameters/WatchlistAlias"
+            "$ref": "#/parameters/QueryId"
           },
           {
-            "$ref": "#/parameters/WatchlistItemId"
+            "$ref": "#/parameters/EditedQueryId"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/WatchlistItem"
+              "$ref": "#/definitions/EditedQuery"
             }
           },
           "default": {
@@ -337,15 +328,15 @@
       },
       "delete": {
         "x-ms-examples": {
-          "Delete a watchlist Item.": {
-            "$ref": "./examples/watchlists/DeleteWatchlistItem.json"
+          "Delete an edited query.": {
+            "$ref": "./examples/QueryAssistant/DeleteEditedQuery.json"
           }
         },
         "tags": [
-          "WatchlistItems"
+          "EditedQueries"
         ],
-        "description": "Delete a watchlist item.",
-        "operationId": "WatchlistItems_Delete",
+        "description": "Delete an edited queries.",
+        "operationId": "EditedQueries_Delete",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -360,10 +351,10 @@
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
           },
           {
-            "$ref": "#/parameters/WatchlistAlias"
+            "$ref": "#/parameters/QueryId"
           },
           {
-            "$ref": "#/parameters/WatchlistItemId"
+            "$ref": "#/parameters/EditedQueryId"
           }
         ],
         "responses": {
@@ -383,15 +374,15 @@
       },
       "put": {
         "x-ms-examples": {
-          "Creates or updates a watchlist item.": {
-            "$ref": "./examples/watchlists/CreateWatchlistItem.json"
+          "Creates or updates an edited query.": {
+            "$ref": "./examples/QueryAssistant/CreateEditedQuery.json"
           }
         },
         "tags": [
-          "WatchlistItems"
+          "EditedQueries"
         ],
-        "description": "Creates or updates a watchlist item.",
-        "operationId": "WatchlistItems_CreateOrUpdate",
+        "description": "Creates or updates an edited query.",
+        "operationId": "EditedQueries_CreateOrUpdate",
         "parameters": [
           {
             "$ref": "../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
@@ -406,26 +397,26 @@
             "$ref": "../../../common/2.0/types.json#/parameters/WorkspaceName"
           },
           {
-            "$ref": "#/parameters/WatchlistAlias"
+            "$ref": "#/parameters/QueryId"
           },
           {
-            "$ref": "#/parameters/WatchlistItemId"
+            "$ref": "#/parameters/EditedQueryId"
           },
           {
-            "$ref": "#/parameters/WatchlistItem"
+            "$ref": "#/parameters/EditedQuery"
           }
         ],
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/WatchlistItem"
+              "$ref": "#/definitions/EditedQuery"
             }
           },
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/WatchlistItem"
+              "$ref": "#/definitions/EditedQuery"
             }
           },
           "default": {
@@ -439,19 +430,19 @@
     }
   },
   "definitions": {
-    "WatchlistList": {
-      "description": "List all the watchlists.",
+    "QueryList": {
+      "description": "List all the queries.",
       "type": "object",
       "properties": {
         "nextLink": {
-          "description": "URL to fetch the next set of watchlists.",
+          "description": "URL to fetch the next set of queries.",
           "readOnly": true,
           "type": "string"
         },
         "value": {
-          "description": "Array of watchlist.",
+          "description": "Array of queries.",
           "items": {
-            "$ref": "#/definitions/Watchlist"
+            "$ref": "#/definitions/Query"
           },
           "type": "array"
         }
@@ -460,24 +451,24 @@
         "value"
       ]
     },
-    "Watchlist": {
+    "Query": {
       "allOf": [
         {
           "$ref": "../../../common/2.0/types.json#/definitions/ResourceWithEtag"
         }
       ],
-      "description": "Represents a Watchlist in Azure Security Insights.",
+      "description": "Represents a Query in Azure Security Insights.",
       "properties": {
         "properties": {
-          "$ref": "#/definitions/WatchlistProperties",
-          "description": "Watchlist properties",
+          "$ref": "#/definitions/QueryProperties",
+          "description": "Query properties",
           "x-ms-client-flatten": true
         }
       },
       "type": "object"
     },
-    "WatchlistProperties": {
-      "description": "Describes watchlist properties",
+    "QueryProperties": {
+      "description": "Describes Query properties",
       "properties": {
         "watchlistId": {
           "description": "The id (a Guid) of the watchlist",
@@ -588,18 +579,18 @@
       ],
       "type": "object"
     },
-    "WatchlistItemList": {
-      "description": "List all the watchlist items.",
+    "EditedQueryList": {
+      "description": "List all the Edited Queries.",
       "properties": {
         "nextLink": {
-          "description": "URL to fetch the next set of watchlist item.",
+          "description": "URL to fetch the next set of edited queries.",
           "readOnly": true,
           "type": "string"
         },
         "value": {
-          "description": "Array of watchlist items.",
+          "description": "Array of edited queries.",
           "items": {
-            "$ref": "#/definitions/WatchlistItem"
+            "$ref": "#/definitions/EditedQuery"
           },
           "type": "array"
         }
@@ -609,24 +600,24 @@
         "value"
       ]
     },
-    "WatchlistItem": {
+    "EditedQuery": {
       "allOf": [
         {
           "$ref": "../../../common/2.0/types.json#/definitions/ResourceWithEtag"
         }
       ],
-      "description": "Represents a Watchlist item in Azure Security Insights.",
+      "description": "Represents a Edited Query in Azure Security Insights.",
       "properties": {
         "properties": {
-          "$ref": "#/definitions/WatchlistItemProperties",
-          "description": "Watchlist Item properties",
+          "$ref": "#/definitions/EditedQueryProperties",
+          "description": "Edited Query properties",
           "x-ms-client-flatten": true
         }
       },
       "type": "object"
     },
-    "WatchlistItemProperties": {
-      "description": "Describes watchlist item properties",
+    "EditedQueryProperties": {
+      "description": "Describes Edited Query properties",
       "properties": {
         "watchlistItemType": {
           "description": "The type of the watchlist item",
@@ -681,38 +672,38 @@
     }
   },
   "parameters": {
-    "WatchlistAlias": {
-      "description": "Watchlist Alias",
+    "QueryId": {
+      "description": "Query Id",
       "in": "path",
-      "name": "watchlistAlias",
+      "name": "queryId",
       "required": true,
       "type": "string",
       "x-ms-parameter-location": "method"
     },
-    "Watchlist": {
-      "description": "The watchlist",
+    "Query": {
+      "description": "The Query",
       "in": "body",
-      "name": "watchlist",
+      "name": "query",
       "required": true,
       "schema": {
-        "$ref": "#/definitions/Watchlist"
+        "$ref": "#/definitions/Query"
       },
       "x-ms-parameter-location": "method"
     },
-    "WatchlistItem": {
-      "description": "The watchlist item",
+    "EditedQuery": {
+      "description": "The edited query",
       "in": "body",
-      "name": "watchlistItem",
+      "name": "editedQuery",
       "required": true,
       "schema": {
-        "$ref": "#/definitions/WatchlistItem"
+        "$ref": "#/definitions/EditedQuery"
       },
       "x-ms-parameter-location": "method"
     },
-    "WatchlistItemId": {
-      "description": "Watchlist Item Id (GUID)",
+    "EditedQueryId": {
+      "description": "Edited Query Id (GUID)",
       "in": "path",
-      "name": "watchlistItemId",
+      "name": "editedQueryId",
       "required": true,
       "type": "string",
       "x-ms-parameter-location": "method"
