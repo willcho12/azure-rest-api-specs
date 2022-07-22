@@ -38,7 +38,7 @@
       "get": {
         "x-ms-examples": {
           "Get all queries.": {
-            "$ref": "./examples/QueryAssistant/GetQueries.json"
+            "$ref": "./examples/queryAssistant/GetQueries.json"
           }
         },
         "tags": [
@@ -83,7 +83,7 @@
       "get": {
         "x-ms-examples": {
           "Get a query.": {
-            "$ref": "./examples/QueryAssistant/GetQueryById.json"
+            "$ref": "./examples/queryAssistant/GetQueryById.json"
           }
         },
         "tags": [
@@ -126,7 +126,7 @@
       "delete": {
         "x-ms-examples": {
           "Delete a query.": {
-            "$ref": "./examples/QueryAssistant/DeleteQuery.json"
+            "$ref": "./examples/queryAssistant/DeleteQuery.json"
           }
         },
         "tags": [
@@ -175,7 +175,7 @@
       "put": {
         "x-ms-examples": {
           "Creates or updates a query.": {
-            "$ref": "./examples/QueryAssistant/CreateQuery.json"
+            "$ref": "./examples/queryAssistant/CreateQuery.json"
           }
         },
         "tags": [
@@ -235,7 +235,7 @@
       "get": {
         "x-ms-examples": {
           "Get all edited queries.": {
-            "$ref": "./examples/QueryAssistant/GetEditedQueries.json"
+            "$ref": "./examples/queryAssistant/GetEditedQueries.json"
           }
         },
         "tags": [
@@ -283,7 +283,7 @@
       "get": {
         "x-ms-examples": {
           "Get an edited query.": {
-            "$ref": "./examples/QueryAssistant/GetEditedQueryById.json"
+            "$ref": "./examples/queryAssistant/GetEditedQueryById.json"
           }
         },
         "tags": [
@@ -329,7 +329,7 @@
       "delete": {
         "x-ms-examples": {
           "Delete an edited query.": {
-            "$ref": "./examples/QueryAssistant/DeleteEditedQuery.json"
+            "$ref": "./examples/queryAssistant/DeleteEditedQuery.json"
           }
         },
         "tags": [
@@ -375,7 +375,7 @@
       "put": {
         "x-ms-examples": {
           "Creates or updates an edited query.": {
-            "$ref": "./examples/QueryAssistant/CreateEditedQuery.json"
+            "$ref": "./examples/queryAssistant/CreateEditedQuery.json"
           }
         },
         "tags": [
