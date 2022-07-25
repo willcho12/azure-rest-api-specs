@@ -26,7 +26,8 @@
           "queryId": "00000000-0001-4647-9105-6339bfdb4e6a",
           "correlationId": "77e4fc3d-9028-4bf2-8b3a-839a7e6dfc04",
           "naturalLanguage": "top 10 login",
-          "documentType": "assistedQuery"
+          "documentType": "assistedQuery",
+          "executionResult": "200"
         }
       }
     }

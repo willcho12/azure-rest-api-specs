@@ -210,7 +210,7 @@
               "$ref": "#/definitions/Query"
             }
           },
-          "201": {????
+          "201": {
             "description": "Created. The response includes the Provisioning State and the Azure-AsyncOperation header. To get the progress of the operation, call GET operation on the URL in Azure-AsyncOperation header field.",
             "schema": {
               "$ref": "#/definitions/Query"
@@ -470,112 +470,53 @@
     "QueryProperties": {
       "description": "Describes Query properties",
       "properties": {
-        "watchlistId": {
-          "description": "The id (a Guid) of the watchlist",
+        "queryId": {
+          "description": "The id (a Guid) of the query",
           "type": "string"
         },
-        "displayName": {
-          "description": "The display name of the watchlist",
+        "correlationId": {
+          "description": "The id (a Guid) of the correlationId",
           "type": "string"
         },
-        "provider": {
-          "description": "The provider of the watchlist",
+        "naturalLanguage": {
+          "description": "The natural language",
           "type": "string"
         },
-        "source": {
-          "description": "The filename of the watchlist, called 'source'",
+        "kustoQueryLanguage": {
+          "description": "the kusto query for a natural language",
           "type": "string"
-        },
-        "sourceType": {
-          "description": "The sourceType of the watchlist",
-          "enum": [
-            "Local file",
-            "Remote storage"
-          ],
-          "type": "string",
-          "x-ms-enum": {
-            "modelAsString": true,
-            "name": "sourceType"
-          }
         },
         "created": {
-          "description": "The time the watchlist was created",
+          "description": "The time the query was created",
           "format": "date-time",
           "type": "string"
         },
         "updated": {
-          "description": "The last time the watchlist was updated",
+          "description": "The last time the query was updated",
           "format": "date-time",
           "type": "string"
         },
         "createdBy": {
           "$ref": "../../../common/2.0/types.json#/definitions/UserInfo",
-          "description": "Describes a user that created the watchlist",
+          "description": "Describes a user that created the query",
           "type": "object"
         },
         "updatedBy": {
           "$ref": "../../../common/2.0/types.json#/definitions/UserInfo",
-          "description": "Describes a user that updated the watchlist",
+          "description": "Describes a user that updated the query",
           "type": "object"
         },
-        "description": {
-          "description": "A description of the watchlist",
+        "documentType": {
+          "description": "A type of the document (is 'assistedQuery')",
           "type": "string"
         },
-        "watchlistType": {
-          "description": "The type of the watchlist",
-          "type": "string"
-        },
-        "watchlistAlias": {
-          "description": "The alias of the watchlist",
-          "type": "string"
-        },
-        "isDeleted": {
-          "description": "A flag that indicates if the watchlist is deleted or not",
-          "type": "boolean"
-        },
-        "labels": {
-          "description": "List of labels relevant to this watchlist",
-          "items": {
-            "$ref": "../../../common/2.0/types.json#/definitions/Label"
-          },
-          "type": "array"
-        },
-        "defaultDuration": {
-          "description": "The default duration of a watchlist (in ISO 8601 duration format)",
-          "format": "duration",
-          "type": "string"
-        },
-        "tenantId": {
-          "description": "The tenantId where the watchlist belongs to",
-          "type": "string"
-        },
-        "numberOfLinesToSkip": {
-          "description": "The number of lines in a csv/tsv content to skip before the header",
-          "type": "integer",
-          "format": "int32"
-        },
-        "rawContent": {
-          "description": "The raw content that represents to watchlist items to create. In case of csv/tsv content type, it's the content of the file that will parsed by the endpoint",
-          "type": "string"
-        },
-        "itemsSearchKey": {
-          "description": "The search key is used to optimize query performance when using watchlists for joins with other data. For example, enable a column with IP addresses to be the designated SearchKey field, then use this field as the key field when joining to other event data by IP address.",
-          "type": "string"
-        },
-        "contentType": {
-          "description": "The content type of the raw content. Example : text/csv or text/tsv ",
-          "type": "string"
-        },
-        "uploadStatus": {
-          "description": "The status of the Watchlist upload : New, InProgress or Complete. Pls note : When a Watchlist upload status is equal to InProgress, the Watchlist cannot be deleted",
+        "executionResult": {
+          "description": "The result of the execution to get kusto query from  natural language input",
           "type": "string"
         }
       },
       "required": [
-        "displayName",
-        "provider",
-        "itemsSearchKey"
+        "naturalLanguage"
       ],
       "type": "object"
     },
@@ -619,54 +560,53 @@
     "EditedQueryProperties": {
       "description": "Describes Edited Query properties",
       "properties": {
-        "watchlistItemType": {
-          "description": "The type of the watchlist item",
-          "type": "string"
+        "queryId": {
+            "description": "The id (a Guid) of the query",
+            "type": "string"
         },
-        "watchlistItemId": {
-          "description": "The id (a Guid) of the watchlist item",
-          "type": "string"
+        "editedQueryId": {
+            "description": "The id (a Guid) of the edited query",
+            "type": "string"
         },
-        "tenantId": {
-          "description": "The tenantId to which the watchlist item belongs to",
-          "type": "string"
+        "correlationId": {
+            "description": "The id (a Guid) of the correlationId",
+            "type": "string"
         },
-        "isDeleted": {
-          "description": "A flag that indicates if the watchlist item is deleted or not",
-          "type": "boolean"
+        "kustoQueryLanguage": {
+            "description": "the kusto query for a natural language",
+            "type": "string"
         },
         "created": {
-          "description": "The time the watchlist item was created",
-          "format": "date-time",
-          "type": "string"
+            "description": "The time the edited query was created",
+            "format": "date-time",
+            "type": "string"
         },
         "updated": {
-          "description": "The last time the watchlist item was updated",
-          "format": "date-time",
-          "type": "string"
+            "description": "The last time the edited query was updated",
+            "format": "date-time",
+            "type": "string"
         },
         "createdBy": {
-          "$ref": "../../../common/2.0/types.json#/definitions/UserInfo",
-          "description": "Describes a user that created the watchlist item",
-          "type": "object"
+            "$ref": "../../../common/2.0/types.json#/definitions/UserInfo",
+            "description": "Describes a user that created the edited query",
+            "type": "object"
         },
         "updatedBy": {
-          "$ref": "../../../common/2.0/types.json#/definitions/UserInfo",
-          "description": "Describes a user that updated the watchlist item"
+            "$ref": "../../../common/2.0/types.json#/definitions/UserInfo",
+            "description": "Describes a user that updated the edited query",
+            "type": "object"
         },
-        "itemsKeyValue": {
-          "description": "key-value pairs for a watchlist item",
-          "type": "object",
-          "additionalProperties": {}
+        "documentType": {
+            "description": "A type of the document (is 'assistedQuery')",
+            "type": "string"
         },
-        "entityMapping": {
-          "description": "key-value pairs for a watchlist item entity mapping",
-          "type": "object",
-          "additionalProperties": {}
+        "executionResult": {
+            "description": "The result of the execution to get kusto query from  natural language input",
+            "type": "string"
         }
       },
       "required": [
-        "itemsKeyValue"
+        "kustoQueryLanguage"
       ],
       "type": "object"
     }
