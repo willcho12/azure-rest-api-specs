@@ -1,7 +1,7 @@
 {
   "swagger": "2.0",
   "info": {
-    "version": "2020-01-01",
+    "version": "2022-08-01",
     "title": "AdvisorManagementClient",
     "description": "REST APIs for Azure Advisor"
   },
@@ -931,6 +931,7 @@
             "modelAsString": true
           }
         },
+<<<<<<< HEAD
         "duration": {
           "description": "Duration period for Advisor low CPU utilization evaluation. Valid only for subscriptions. Valid values: 7 (default), 14, 21, 30, 60 or 90.",
           "enum": [
@@ -947,6 +948,8 @@
             "modelAsString": true
           }
         },
+=======
+>>>>>>> 3ecfbddddc1b089f9eaebd2067782b016cf21af3
         "digests": {
           "description": "Advisor digest configuration. Valid only for subscriptions",
           "type": "array",
